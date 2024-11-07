@@ -1,5 +1,14 @@
-# Flask/React User Query Example
-This is a simple Flask/React application that integrates with GPT-3 API to search and retrieve relevant data from a predetermined dataset.
+# Flask/React User Query Challenge
+
+## Table of Contents
+1. [Introduction](#introduction)
+2. [Prerequisites](#prerequisites)
+3. [Local Installation](#local-installation)
+4. [Running the Flask backend](#running-the-flask-backend)
+5. [Running the React frontend](#setup-and-running-the-react-frontend)
+
+## Introduction
+This is a simple Flask/React application that integrates with the OpenAI API to search and retrieve relevant data from a predetermined dataset.
 
 ## Prerequisites
 * Python 3.7 or higher
@@ -7,53 +16,33 @@ This is a simple Flask/React application that integrates with GPT-3 API to searc
 * OpenAI API key
 
 ## Local installation
-Follow these steps to setup and run the project locally:
-1. Download and extract the project from the zip file into a directory of your choice
-2. Install backend dependencies:
-    - Option 1: Using `pip` (recommended for simplicity)
-        * Install a virtual environment (recommended to keep dependencies isolated from other projects):
-            * Create a virtual environment:
-                ```bash
-                python -m venv venv
-                ```
-            * Activate the virtual environment:
-                - On macOS/Linux
-                ```bash
-                source venv/bin/activate
-                ```
-                - On Windows
-                ```bash
-                venv\Scripts\activate
-                ```
-        * Install dependencies:
-            * Install the required Python dependencies from `requirements.txt`:
-                ```bash
-                pip install -r requirements.txt
-                ```
-    - Option 2: Using `pipenv` (optional, if you prefer Pipenv)
-        * If you have `pipenv` installed and prefer to use it, you can install the dependencies with:
-            ```bash
-            pipenv install
-            ```
-        * To enter the virtual environment with Pipenv:
-            ```bash
-            pipenv shell
-            ```
-        > Note: `pipenv` is a tool that automatically manages virtual environments for you, but it requires
-        installation via `pip install pipenv`. If you don't already have it, using `pip` and `requirements.txt` (Option 1) is simpler.
-3. Set the OpenAI API Key:
-    - Before running the app, make sure you have an **OpenAI API key**. Set this key in your environment variables by creating a .env file and add the following line:
+1. First, clone the repository from GitHub:
+    ```bash
+    git clone https://github.com/vinob09/dd-challenge.git
+    cd dd-challenge
+    ```
+2. Set Up the Backend (Flask):
+    * Create a virtual environment to keep dependencies isolated
         ```bash
-        OPENAI_API_KEY="your-api-key-here"
+        python -m venv venv
         ```
-    - Alternatively if you do not want to create a .env file, you can set in in the terminal:
-        * On macOS/Linux
+    * Activate the virtual environment
+        - On macOS/Linux
             ```bash
-            export OPENAI_API_KEY="your-api-key-here"
+            source venv/bin/activate
             ```
-        * On Windows
+        - On Windows
             ```bash
-            set OPENAI_API_KEY="your-api-key-here"
+            venv\Scripts\activate
+            ```
+    * Install backend dependencies
+        ```bash
+        pip install -r requirements.txt
+        ```
+    * Setup the OpenAI API Key
+        - Create a `.env` file in the root directory and add the following line
+            ```bash
+            OPENAI_API_KEY="your-api-key-here"
             ```
 
 ## Running the Flask backend
@@ -63,20 +52,24 @@ Follow these steps to setup and run the project locally:
 > If you would like to run the backend on a different port, you can specify the port using the `--port` option: `flask run --port 5001`
 
 
-
-## Running the React frontend
-1. Install the frontend dependencies:
-    - `cd react-frontend`
-    - `npm install`
-2. Start the React development server:
-    - `npm start`
-> This will start the React development server at port 3000 by default.
-> If you changed the backend port, you need to update the frontend proxy to correctly communicate with the backend. In the
-`react-frontend` folder, open the `package.json` file and update the proxy field with the new backend URL. For example, if you
-are using port `5001` for Flask, the `package.json` file should look like this:
-```bash
-"proxy": "http://localhost:5001"
-```
-
+## Setup and Running the React frontend
+1. In another terminal window, navigate to the frontend directory:
+    ```bash
+    cd react-frontend
+    ```
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+3. Configure proxy (if needed):
+    * If the Flask backend is running on a port other than 5000, update the proxy field in react-frontend/package.json to match, for example:
+    ```bash
+    "proxy": "http://localhost:5001"
+    ```
+4. Run the frontend server
+    ```bash
+    npm start
+    ```
+    > This will start the React server on port 3000 by default.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
